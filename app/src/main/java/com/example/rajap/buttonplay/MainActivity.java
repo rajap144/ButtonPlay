@@ -35,18 +35,21 @@ public class MainActivity extends AppCompatActivity
 			{
 				numTimesClicked += 1;
 				String result = " The Button got tapped " + numTimesClicked + " time";
-				String text = userInput.getText().toString();
-				textView.append(text+"\n");
-				textView.append(result);
 				if(numTimesClicked != 1)
 				{
 					result += "s";
 				}
+				String text = userInput.getText().toString();
+				textView.append(text+"\n");
 				result += "\n";
+				textView.append(result);
 				userInput.setText("");
 			}
 		};
-		button.setOnClickListener(myOnClickListener);
+		if(button != null)
+		{
+			button.setOnClickListener(myOnClickListener);
+		}
 		Log.d(TAG,"onCreate: end");
 	}
 

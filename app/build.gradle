@@ -18,6 +18,38 @@ android {
     }
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
+    }
+}
+
+
+apply plugin: 'spoon'
+
+// This section is optional
+spoon {
+    // for debug output
+    debug = true
+
+    // To run a single test class
+    //className = 'fully.qualified.TestCase'
+
+    // To run a single method in TestCase
+    //methodName = 'testMyApp'
+    methodName = 'ExampleInstrumentedTest'
+
+    // To execute the tests device by device */
+    sequential = true
+
+    // To grant permissions to Android M >= devices */
+    grantAllPermissions = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -25,4 +57,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //Spoon
+    androidTestCompile 'com.squareup.spoon:spoon-client:1.7.1'
 }

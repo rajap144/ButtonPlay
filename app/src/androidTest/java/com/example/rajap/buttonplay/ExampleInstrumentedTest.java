@@ -7,7 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -24,5 +24,22 @@ public class ExampleInstrumentedTest
 		Context appContext = InstrumentationRegistry.getTargetContext();
 
 		assertEquals("com.example.rajap.buttonplay", appContext.getPackageName());
+	}
+
+
+	@Test
+	public void testSetMismatchError() {
+		// Make screenshot before performance
+		//Spoon.screenshot(getActivity(), "initial_state");
+
+
+		// Action
+		//onView(withId(R.id.submit)).perform(click());
+
+		// Make screenshot after performance
+		//Spoon.screenshot(getActivity(), "after_state");
+
+		// Test
+		//onView(withText(R.string.msg_mismatch)).check(matches(isDisplayed()));
 	}
 }

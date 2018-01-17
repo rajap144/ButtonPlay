@@ -1,0 +1,1 @@
+java -jar spoon-runner-1.7.1-jar-with-dependencies.jar --sdk /Users/rajap/AppData/Local/Android/Sdk --output app/build/reports/androidTests/connected/ --apk app/build/outputs/apk/debug/app-debug.apk --test-apk app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk

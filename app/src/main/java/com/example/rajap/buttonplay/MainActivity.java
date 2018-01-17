@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -35,15 +36,18 @@ public class MainActivity extends AppCompatActivity
 			{
 				numTimesClicked += 1;
 				String result = " The Button got tapped " + numTimesClicked + " time";
-				String text = userInput.getText().toString();
-				textView.append(text+"\n");
-				textView.append(result);
 				if(numTimesClicked != 1)
 				{
 					result += "s";
 				}
+				String text = userInput.getText().toString();
+				textView.append(text+"\n");
 				result += "\n";
+				textView.append(result);
 				userInput.setText("");
+
+				Toast toast = Toast.makeText(getApplicationContext(),"Button Pressed",Toast.LENGTH_SHORT);
+				toast.show();
 			}
 		};
 		button.setOnClickListener(myOnClickListener);

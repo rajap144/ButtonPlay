@@ -15,7 +15,69 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
+    }
+}
+
+/**
+ *
+ C:\Users\rajap\Documents\GitHub\ButtonPlay>java -jar spoon-runner-1.7.1-jar-with-dependencies.jar --sdk /Users/rajap/AppData/Local/Android/Sdk --output app/build/reports/androidTests
+ /connected/ --apk app/build/outputs/apk/debug/app-debug.apk --test-apk app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+ Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 107
+ at com.squareup.spoon.axmlparser.StringBlock.getShort(StringBlock.java:241)
+ at com.squareup.spoon.axmlparser.StringBlock.getRaw(StringBlock.java:99)
+ at com.squareup.spoon.axmlparser.StringBlock.read(StringBlock.java:66)
+ at com.squareup.spoon.axmlparser.AXMLParser.doStart(AXMLParser.java:200)
+ at com.squareup.spoon.axmlparser.AXMLParser.<init>(AXMLParser.java:48)
+ at com.squareup.spoon.SpoonInstrumentationInfo.parseFromFile(SpoonInstrumentationInfo.java:57)
+ at com.squareup.spoon.SpoonRunner.run(SpoonRunner.java:117)
+ at com.squareup.spoon.SpoonRunner.main(SpoonRunner.java:695)
+
+ */
+//AXML Parser
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
+//Jacoco
+apply plugin: 'jacoco'
+
+//Spoon
+apply plugin: 'spoon'
+
+spoon {
+    // for debug output
+    debug = true
+
+
+
+    codeCoverage = true
+
+    // To execute the tests device by device */
+    sequential = true
+
+    // Set ADB timeout. (minutes) (default is 10 mins)
+    adbTimeout = 5
+
+    // Do not fail build if a test fails, let all the tests run and finish.
+    ignoreFailures = true
+
+    // To grant permissions to Android M >= devices */
+    // grantAllPermissions = true
 }
 
 dependencies {
@@ -23,6 +85,24 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
+
+    //espresso
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //Barista 2
+
+    //androidTestCompile('com.schibsted.spain:barista:2.2.0') {
+    androidTestImplementation('com.schibsted.spain:barista:2.2.0') {
+        exclude group: 'com.android.support'
+    }
+
+    //Spoon
+    //androidTestCompile 'com.squareup.spoon:spoon-client:1.7.1'
+    androidTestImplementation 'com.squareup.spoon:spoon-client:1.7.1'
+
+    //AXML parser
+    //compile 'com.github.xgouchet:AXML:v1.0'
+    implementation 'com.github.xgouchet:AXML:v1.0'
+
 }

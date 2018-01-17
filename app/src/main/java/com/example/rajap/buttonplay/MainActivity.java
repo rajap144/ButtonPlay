@@ -50,7 +50,10 @@ public class MainActivity extends AppCompatActivity
 				toast.show();
 			}
 		};
-		button.setOnClickListener(myOnClickListener);
+		if(button != null)
+		{
+			button.setOnClickListener(myOnClickListener);
+		}
 		Log.d(TAG,"onCreate: end");
 	}
 

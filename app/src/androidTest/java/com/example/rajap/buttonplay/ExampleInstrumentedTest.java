@@ -79,5 +79,4 @@ public class ExampleInstrumentedTest
 		assertEquals("com.example.rajap.buttonplay", appContext.getPackageName());
 	}
 
-
 }

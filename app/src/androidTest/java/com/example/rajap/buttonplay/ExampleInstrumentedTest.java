@@ -1,27 +1,21 @@
 package com.example.rajap.buttonplay;
 
-import android.content.Context;
-import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.intent.Intents;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
 import com.schibsted.spain.barista.rule.BaristaRule;
-import com.squareup.spoon.Spoon;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static android.support.test.espresso.intent.Intents.intended;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn;
-import static com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo;
-import static com.schibsted.spain.barista.interaction.BaristaKeyboardInteractions.closeKeyboard;
-import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -34,6 +28,11 @@ public class ExampleInstrumentedTest
 
 	@Rule
 	public BaristaRule<MainActivity> baristaRule = BaristaRule.create(MainActivity.class);
+
+	//@Rule
+	//public IntentsTestRule<ActivityTwo> intentsTestRule =
+	//		new IntentsTestRule<>(ActivityTwo.class);
+
 	MainActivity mActivity = baristaRule.getActivityTestRule().getActivity();
 	private TestName name = new TestName();
 
@@ -42,34 +41,39 @@ public class ExampleInstrumentedTest
 	{
 		Log.i("Info","[START] - Launch Test: " + name.getMethodName());
 		baristaRule.launchActivity();
+		Intents.init();
 	}
 
 
-	//@After
+	@After
 	public void tearDown()
 	{
 		Log.i("Info", "[FINISH] - Test: " + name.getMethodName());
+		Intents.release();
 	}
 
 	@Test
 	public void SimpleTest() throws Exception
 	{
-		Spoon.screenshot(mActivity, "initial_state");
+		Boolean b = testing();
+		Log.i("Info","Testing returns : " + b.toString());
+		/*
+		//Spoon.screenshot(mActivity, "initial_state");
 
 		clickOn(R.id.editText);
 		writeTo(R.id.editText,"Hello");
 		closeKeyboard();
 		clickOn(R.id.button);
 
-		//for(int i=0;i<10;++i)
-		{
-			clickOn(R.id.button);
-			onView(withText("Button Pressed")).check(matches(isDisplayed()));
-		}
-
-		Spoon.screenshot(mActivity, "final_state");
+		//clickOn(R.id.button);
+		onView(withText(R.string.toast)).inRoot(withDecorView(not(is(baristaRule.getActivityTestRule().getActivity()
+					.getWindow().getDecorView())))).check(matches(isDisplayed()));
+		//onView(withId(R.string.toast)).check(matches(hasErrorText(mActivity.getString(R.string.button))));
+		//Spoon.screenshot(mActivity, "final_state");
+		*/
 	}
 
+	/*
 	@Test
 	public void useAppContext() throws Exception
 	{
@@ -78,5 +82,15 @@ public class ExampleInstrumentedTest
 
 		assertEquals("com.example.rajap.buttonplay", appContext.getPackageName());
 	}
+	*/
 
+	public boolean testing()
+	{
+		clickOn(R.id.button);
+		//intended(hasComponent(ActivityTwo.class.getName()));
+		//intended(toPackage("com.example.rajap.buttonplay"));
+		intended(hasComponent(ActivityTwo.class.getName()));
+		//return baristaRule.getClass().desiredAssertionStatus();
+		return  true;
+	}
 }

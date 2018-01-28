@@ -1,6 +1,5 @@
 package com.example.rajap.buttonplay;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
@@ -8,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
 			@Override
 			public void onClick(View view)
 			{
-				/*
+				///*
 				numTimesClicked += 1;
 				String result = " The Button got tapped " + numTimesClicked + " time";
 				if(numTimesClicked != 1)
@@ -54,10 +54,11 @@ public class MainActivity extends AppCompatActivity
 				userInput.setText("");
 
 				Toast toast = Toast.makeText(getApplicationContext(),"Button Pressed",Toast.LENGTH_LONG);
-				toast.show();*/
+				toast.show();
+				//*/
 
-				Intent newActivity = new Intent(MainActivity.this, ActivityTwo.class);
-				startActivity(newActivity);
+				//Intent newActivity = new Intent(MainActivity.this, ActivityTwo.class);
+				//startActivity(newActivity);
 			}
 		};
 		if(button != null)

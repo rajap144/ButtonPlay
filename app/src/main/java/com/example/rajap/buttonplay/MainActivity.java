@@ -34,20 +34,31 @@ public class MainActivity extends AppCompatActivity
 			@Override
 			public void onClick(View view)
 			{
+				///*
 				numTimesClicked += 1;
 				String result = " The Button got tapped " + numTimesClicked + " time";
 				if(numTimesClicked != 1)
 				{
 					result += "s";
 				}
-				String text = userInput.getText().toString();
-				textView.append(text+"\n");
-				result += "\n";
 				textView.append(result);
+				String text = userInput.getText().toString();
+				if(text != "")
+				{
+					textView.append("\n" + text + "\n");
+				}
+				else
+				{
+					textView.append("\n");
+				}
 				userInput.setText("");
 
-				Toast toast = Toast.makeText(getApplicationContext(),"Button Pressed",Toast.LENGTH_SHORT);
+				Toast toast = Toast.makeText(getApplicationContext(),"Button Pressed",Toast.LENGTH_LONG);
 				toast.show();
+				//*/
+
+				//Intent newActivity = new Intent(MainActivity.this, ActivityTwo.class);
+				//startActivity(newActivity);
 			}
 		};
 		if(button != null)

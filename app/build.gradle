@@ -53,7 +53,10 @@ allprojects {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0bc7657093390df7a2f28e7a30a29a362505e623
 //Jacoco
 apply plugin: 'jacoco'
 
@@ -66,7 +69,10 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
+        classpath('com.stanfy.spoon:spoon-gradle-plugin:1.2.2') {
+            exclude module: 'guava'
+        }
+        classpath 'com.google.guava:guava:17.0'
     }
 }
 
@@ -74,20 +80,34 @@ buildscript {
 apply plugin: 'spoon'
 
 // This section is optional
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0bc7657093390df7a2f28e7a30a29a362505e623
 spoon {
     // for debug output
     debug = true
 
+<<<<<<< HEAD
+=======
+    // To run a single method in TestCase
+    methodName = 'SimpleTest'
+>>>>>>> 0bc7657093390df7a2f28e7a30a29a362505e623
 
+    // To grant permissions to Android M >= devices */
+    grantAllPermissions = true
 
     codeCoverage = true
     // To run a single test class
     //className = 'fully.qualified.TestCase'
 
+<<<<<<< HEAD
     // To run a single method in TestCase
     //methodName = 'testMyApp'
     methodName = 'ExampleInstrumentedTest'
 
+=======
+>>>>>>> 0bc7657093390df7a2f28e7a30a29a362505e623
     // To execute the tests device by device */
     sequential = true
 
@@ -101,6 +121,10 @@ spoon {
     // grantAllPermissions = true
     // To grant permissions to Android M >= devices */
     grantAllPermissions = true
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0bc7657093390df7a2f28e7a30a29a362505e623
 }
 
 dependencies {
@@ -111,7 +135,9 @@ dependencies {
 
     //espresso
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestCompile 'com.android.support.test:rules:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:3.0.1'
 
     //Barista 2
 
@@ -127,7 +153,11 @@ dependencies {
     //AXML parser
     //compile 'com.github.xgouchet:AXML:v1.0'
     implementation 'com.github.xgouchet:AXML:v1.0'
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 0bc7657093390df7a2f28e7a30a29a362505e623
     //Spoon
     androidTestCompile 'com.squareup.spoon:spoon-client:1.7.1'
 }

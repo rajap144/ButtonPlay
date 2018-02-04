@@ -53,14 +53,13 @@ allprojects {
     }
 }
 
-<<<<<<< HEAD
+
 //Jacoco
 apply plugin: 'jacoco'
 
 //Spoon
 apply plugin: 'spoon'
 
-=======
 buildscript {
     repositories {
         mavenCentral()
@@ -75,28 +74,23 @@ buildscript {
 apply plugin: 'spoon'
 
 // This section is optional
->>>>>>> 305ad6759cacb054487c4f1c457c9b776a6b4880
 spoon {
     // for debug output
     debug = true
 
-<<<<<<< HEAD
 
 
     codeCoverage = true
-=======
     // To run a single test class
     //className = 'fully.qualified.TestCase'
 
     // To run a single method in TestCase
     //methodName = 'testMyApp'
     methodName = 'ExampleInstrumentedTest'
->>>>>>> 305ad6759cacb054487c4f1c457c9b776a6b4880
 
     // To execute the tests device by device */
     sequential = true
 
-<<<<<<< HEAD
     // Set ADB timeout. (minutes) (default is 10 mins)
     adbTimeout = 5
 
@@ -105,10 +99,8 @@ spoon {
 
     // To grant permissions to Android M >= devices */
     // grantAllPermissions = true
-=======
     // To grant permissions to Android M >= devices */
     grantAllPermissions = true
->>>>>>> 305ad6759cacb054487c4f1c457c9b776a6b4880
 }
 
 dependencies {
@@ -121,7 +113,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-<<<<<<< HEAD
     //Barista 2
 
     //androidTestCompile('com.schibsted.spain:barista:2.2.0') {
@@ -136,9 +127,7 @@ dependencies {
     //AXML parser
     //compile 'com.github.xgouchet:AXML:v1.0'
     implementation 'com.github.xgouchet:AXML:v1.0'
-
-=======
+    
     //Spoon
     androidTestCompile 'com.squareup.spoon:spoon-client:1.7.1'
->>>>>>> 305ad6759cacb054487c4f1c457c9b776a6b4880
 }
